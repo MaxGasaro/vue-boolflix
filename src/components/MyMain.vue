@@ -1,15 +1,17 @@
 <template>
   <main>
       <div class="container">
-          <h2></h2>
+          <h2>film:</h2>
           <div class="row">
               <FilmsList v-for="(film, index) in films" :key="index"
               :film="film"
               />
           </div>
-          <h2></h2>
+          <h2>serie tv:</h2>
           <div class="row">
-              <SeriesList/>
+              <SeriesList v-for="(serie, index) in series" :key="index"
+              :serie="serie"
+              />
           </div>
       </div>
   </main>
@@ -39,6 +41,11 @@ main {
     height: calc(100vh - 100px);
     background-color: $mainColor;
     overflow: auto;
+    h2 {
+        color: #fff;
+        text-transform: capitalize;
+        font-size: 1.5rem;
+    }
 }
 
 </style>

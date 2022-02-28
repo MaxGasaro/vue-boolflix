@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MyHeader/>
+    <MyHeader @goSearch="getFilms"/>
     <MyMain :films="films" :series="series"/>
   </div>
 </template>
@@ -17,7 +17,10 @@ export default {
     return {
       series: [],
       films: [],
-      endpoint: 'https://api.themoviedb.org/3/search/movie?api_key=be58c07a8c8934fa215a9404640edea5&query=jack&language=it-IT'
+      endpointMovies: 'https://api.themoviedb.org/3/search/movie?api_key=',
+      endpointSeries: 'https://api.themoviedb.org/3/search/tv?api_key=',
+      language: '&language=it-IT',
+      apiKey: 'be58c07a8c8934fa215a9404640edea5'
     }
   },
   components: {
@@ -25,8 +28,8 @@ export default {
     MyMain
   },
   methods: {
-    getFilms() {
-      axios.get(this.endpoint)
+    getFilms(searchText) {
+      axios.get(`${this.endpointMovies}${this.apiKey}&query=${searchText}${this.language}`)
       .then((response) => {
         // handle success
         this.films = response.data.results;
@@ -36,11 +39,20 @@ export default {
         // handle error
         console.log(error);
       })
+      axios.get(`${this.endpointSeries}${this.apiKey}&query=${searchText}${this.language}`)
+      .then((response) => {
+        this.series = response.data.results;
+        console.log(this.series);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
     }
   },
-  created() {
+  /*created() {
     this.getFilms();
-  }
+  }*/
 }
 </script>
 

@@ -7,7 +7,7 @@
               </div>
               <div class="col ms_input">
                   <input type="text" v-model="search" placeholder="Ricerca un film..">
-                  <button>Cerca!</button>
+                  <button type="submit" @click="$emit('goSearch', search)">Cerca!</button>
               </div>
           </div>
       </div>
