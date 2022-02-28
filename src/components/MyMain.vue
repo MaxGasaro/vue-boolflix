@@ -2,7 +2,7 @@
   <main>
       <div class="container">
           <h2>film:</h2>
-          <div class="row">
+          <div class="row justify-content-center">
               <FilmsList v-for="(film, index) in films" :key="index"
               :film="film"
               />
