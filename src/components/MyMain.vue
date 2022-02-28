@@ -8,7 +8,7 @@
               />
           </div>
           <h2>serie tv:</h2>
-          <div class="row">
+          <div class="row justify-content-center">
               <SeriesList v-for="(serie, index) in series" :key="index"
               :serie="serie"
               />
