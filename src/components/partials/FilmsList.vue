@@ -2,7 +2,7 @@
   <div class="col ms_card m-3">
     <h1>{{film.title}}</h1>
     <h3>{{film.original_title}}</h3>
-    <div>{{film.original_language}}</div>
+    <lang-flag :iso="film.original_language"/>
     <div>{{film.vote_average}}</div>
   </div>
 </template>

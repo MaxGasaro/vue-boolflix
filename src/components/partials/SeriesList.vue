@@ -2,7 +2,7 @@
   <div class="ms_card col m-3">
     <h1>{{serie.name}}</h1>
     <h3>{{serie.original_name}}</h3>
-    <div>{{serie.original_language}}</div>
+    <lang-flag :iso="serie.original_language"/>
     <div>{{serie.vote_average}}</div>
   </div>
 </template>
