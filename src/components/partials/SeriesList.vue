@@ -8,7 +8,9 @@
       <h1>Titolo: {{serie.name}}</h1>
       <h3>Titolo originale: {{serie.original_name}}</h3>
       <lang-flag :iso="serie.original_language"/>
-      <div>Voto: {{serie.vote_average}}</div>
+      <div>
+        <i v-for="i in 5" :key="i" class="fa-star" :class="(i<getComputedStar)?'fa-solid':'fa-regular'"></i>
+      </div>
       <p>Overview: {{serie.overview}}</p>
 
     </div>
@@ -26,7 +28,12 @@ export default {
     },
     props: {
       'serie': Object
-    }
+    },
+    computed: {
+      getComputedStar() {
+        return Math.ceil(this.serie.vote_average / 2);
+      }
+    },
 }
 </script>
 

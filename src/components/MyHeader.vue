@@ -6,8 +6,8 @@
                   <h1 class="title">boolflix</h1>
               </div>
               <div class="col ms_input">
-                  <input type="text" v-model="search" placeholder="Ricerca un film..">
-                  <button type="submit" @click="$emit('goSearch', search)">Cerca!</button>
+                  <input type="text" v-model="search" placeholder="Ricerca" @keyup.enter="$emit('goSearch', search)">
+                  <!--<button type="submit" @keyup.enter="$emit('goSearch', search)">Cerca!</button>-->
               </div>
           </div>
       </div>
@@ -39,6 +39,11 @@ export default {
     }
     .ms_input {
         text-align: right;
+        input {
+            border: 2px solid #fff;
+            border-radius: 8px;
+            padding: 5px 10px;
+        }
     }
 }
 </style>
