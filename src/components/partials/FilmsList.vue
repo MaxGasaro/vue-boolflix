@@ -8,7 +8,10 @@
       <h1>Titolo: {{film.title}}</h1>
       <h3>Titolo Originale: {{film.original_title}}</h3>
       <lang-flag :iso="film.original_language"/>
-      <div>Voto: {{film.vote_average}}</div>
+      <div>
+        <!--Voto: {{film.vote_average}}-->
+        <i v-for="i in 5" :key="i" class="fa-star" :class="(i<getComputedStar)?'fa-solid':'fa-regular'"></i>
+      </div>
       <p>Overview: {{film.overview}}</p>
 
     </div>
@@ -25,12 +28,14 @@ export default {
         hover: false
       }
     },
+    computed: {
+      getComputedStar() {
+        return Math.ceil(this.film.vote_average / 2);
+      }
+    },
     props: {
       'film': Object
     },
-    methods: {
-
-    }
 }
 </script>
 

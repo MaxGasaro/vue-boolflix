@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MyHeader @goSearch="getFilms"/>
+    <MyHeader @goSearch="doSearch"/>
     <MyMain :films="films" :series="series"/>
   </div>
 </template>
@@ -28,6 +28,10 @@ export default {
     MyMain
   },
   methods: {
+    doSearch(keyword) {
+      this.getFilms(keyword);
+      this.getSeries(keyword);
+    },
     getFilms(searchText) {
       axios.get(`${this.endpointMovies}${this.apiKey}&query=${searchText}${this.language}`)
       .then((response) => {
@@ -39,16 +43,19 @@ export default {
         // handle error
         console.log(error);
       })
-      axios.get(`${this.endpointSeries}${this.apiKey}&query=${searchText}${this.language}`)
-      .then((response) => {
-        this.series = response.data.results;
-        console.log(this.series);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-    }
+     },
+     getSeries(searchText) {
+       axios.get(`${this.endpointSeries}${this.apiKey}&query=${searchText}${this.language}`)
+       .then((response) => {
+         this.series = response.data.results;
+         console.log(this.series);
+       })
+       .catch(function (error) {
+         // handle error
+         console.log(error);
+       })
+     }
+   
   },
   /*created() {
     this.getFilms();
@@ -57,5 +64,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~@fortawesome/fontawesome-free/css/all.css'
 
 </style>

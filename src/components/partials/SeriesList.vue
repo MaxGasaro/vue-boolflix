@@ -3,12 +3,13 @@
 
     <img :class="hover?'d-none':''" :src="`${urlImg}${serie.poster_path}`">
 
-    <div :class="hover?'d-block':'d-none'" class="info">
+    <div :class="hover?'d-block':'d-none'" class="info overflow-auto">
 
-      <h1>{{serie.name}}</h1>
-      <h3>{{serie.original_name}}</h3>
+      <h1>Titolo: {{serie.name}}</h1>
+      <h3>Titolo originale: {{serie.original_name}}</h3>
       <lang-flag :iso="serie.original_language"/>
-      <div>{{serie.vote_average}}</div>
+      <div>Voto: {{serie.vote_average}}</div>
+      <p>Overview: {{serie.overview}}</p>
 
     </div>
   </div>

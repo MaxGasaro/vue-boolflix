@@ -1,13 +1,11 @@
 <template>
   <main>
       <div class="container">
-          <h2>film:</h2>
           <div class="row justify-content-center">
               <FilmsList v-for="(film, index) in films" :key="index"
               :film="film"
               />
           </div>
-          <h2>serie tv:</h2>
           <div class="row justify-content-center">
               <SeriesList v-for="(serie, index) in series" :key="index"
               :serie="serie"
